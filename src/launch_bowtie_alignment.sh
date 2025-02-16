@@ -6,6 +6,7 @@
 #SBATCH --partition=vgl
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
 #SBATCH --mail-user=savouriess2112@gmail.com
 
 cpu=$1
@@ -27,7 +28,7 @@ fi
 mkdir -p logs
 
 
-for ((num=3; num<=42; num++)); do
+for ((num=1; num<=42; num++)); do
   echo "Processing sample $num"
 
   for ((hap=1; hap<=2; hap++)); do
@@ -38,7 +39,7 @@ for ((num=3; num<=42; num++)); do
       JOB_COUNT=$(squeue --user=$(whoami) --noheader | wc -l)
       if [ "$JOB_COUNT" -ge "$MAX_JOBS" ]; then
         echo "Too many jobs ($MAX_JOBS)"
-        sleep 1200 #sleep for 20 minutes
+        sleep 60 #sleep for 1 minute
       else
         echo "Continue work with ($JOB_COUNT) tasks"
         break
