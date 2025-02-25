@@ -47,7 +47,7 @@ bowtie2 -p $cpu -x WTS_hap${hap} -1 ${wts_audet_dir}/${prefix}.r1.trimmed.filter
 #convert sam to bam
 mkdir -p $dir/index_WTS/sam2bam
 
-samtools sort -@ $cpu $dir/index_WTS/${prefix}_hap${hap}.sam > $dir/index_WTS/sam2bam/${prefix}_hap${hap}.bam
+samtools sort -@ $cpu $dir/index_WTS/sam/${prefix}_hap${hap}.sam > $dir/index_WTS/sam2bam/${prefix}_hap${hap}.bam
 samtools index $dir/index_WTS/sam2bam/${prefix}_hap${hap}.bam
 
 # generate variant calls in VCF format
